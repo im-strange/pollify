@@ -5,6 +5,8 @@
   <img src="https://img.shields.io/badge/-repository-grey?style=for-the-badge&logo=python&logoColor=white">
 </div>
 
-I've been working on this project where in you can chat with strangers anonymously.
+
+## Description
+Chat and meet strangers anonymously. Powered with Flask and SocketIO.
 
 > Licensed with MIT
