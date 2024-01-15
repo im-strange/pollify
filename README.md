@@ -3,7 +3,7 @@
   <p>Connect to strangers anonymously</p>
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge">
   <img src="https://img.shields.io/badge/Pollify-1.0.0-red?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Python3.11.6-grey?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/Python-3.11.6-grey?style=for-the-badge&logo=python&logoColor=white">
   <img src="https://img.shields.io/badge/Flask-3.0.0-blue?style=for-the-badge">
   <img src="https://img.shields.io/badge/Werkzeug-3.0.1-blue?style=for-the-badge">
 </div>
