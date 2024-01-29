@@ -1,0 +1,6 @@
+{
+    "host_ip": "0.0.0.0",
+    "host_port": 8000,
+    "debug": true,
+    "ngrok_server": true
+}
