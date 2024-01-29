@@ -17,6 +17,7 @@ csv_file = "clients.csv"
 rooms = {"1": [None, None]}
 
 host = getlink.get_ngrok_link()
+host = "127.0.0.1:8000"
 print(f" * Ngrok: {host}")
 
 # fetch server info
