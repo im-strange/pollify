@@ -12,4 +12,7 @@
 ## Description
 Chat and meet strangers anonymously. Powered with Flask and SocketIO.
 
+## Note
+Under development..
+
 > Licensed with MIT
