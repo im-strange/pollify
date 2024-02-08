@@ -2,5 +2,6 @@
     "host_ip": "127.0.0.1",
     "host_port": 8000,
     "debug": true,
-    "server_link": null
+    "server_link": null,
+    "data_file": "clients.csv"
 }

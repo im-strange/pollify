@@ -11,7 +11,6 @@ import string
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "supersecretkey"
 socketio = SocketIO(app, cors_allowed_origins="*")
-csv_file = "clients.csv"
 
 rooms = {
     "1": [None, None],
@@ -25,9 +24,16 @@ class server:
         self.host_port = self.data["host_port"]
         self.debug = self.data["debug"]
         self.server_link = self.data["server_link"]
+        self.data_file = self.data["data_file"]
 
         if not self.server_link:
             self.server_link = f"http://{self.host_ip}:{self.host_port}"
+
+        print(f"[+] host ip: {self.host_ip}")
+        print(f"[+] host port: {self.host_port}")
+        print(f"[+] debug: {self.debug}")
+        print(f"[+] host server link: {self.server_link}")
+        print(f"[+] data file: {self.data_file}")
 
 # fetch server info
 def get_server_info():
@@ -57,8 +63,9 @@ def update_html():
          "rooms_count": server_info[1]
     }, broadcast=True)
 
-# save each's client ip
+# save each's client data
 def write_csv(data):
+    csv_file = server.data_file
     current_file = list(csv.reader(open(csv_file)))
     current_time = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
     data.insert(2, current_time)
@@ -174,5 +181,4 @@ if __name__ == "__main__":
                  host=server.host_ip,
                  port=server.host_port,
                  debug=server.debug)
-
 
