@@ -4,7 +4,6 @@ from flask_socketio import SocketIO, join_room, leave_room, send, emit, disconne
 from datetime import datetime
 import uuid
 import json
-import getlink
 import csv
 import random
 import string
@@ -14,11 +13,21 @@ app.config["SECRET_KEY"] = "supersecretkey"
 socketio = SocketIO(app, cors_allowed_origins="*")
 csv_file = "clients.csv"
 
-rooms = {"1": [None, None]}
+rooms = {
+    "1": [None, None],
+    "2": [None, None]
+}
 
-host = getlink.get_ngrok_link()
-host = "127.0.0.1:8000"
-print(f" * Ngrok: {host}")
+class server:
+    def __init__(self):
+        self.data = json.load(open("server-info.json"))
+        self.host_ip = self.data["host_ip"]
+        self.host_port = self.data["host_port"]
+        self.debug = self.data["debug"]
+        self.server_link = self.data["server_link"]
+
+        if not self.server_link:
+            self.server_link = f"http://{self.host_ip}:{self.host_port}"
 
 # fetch server info
 def get_server_info():
@@ -44,8 +53,8 @@ def generate_id():
 def update_html():
     server_info = get_server_info()
     emit("update_info", {
-        "users_count": server_info[0],
-        "rooms_count": server_info[1]
+         "users_count": server_info[0],
+         "rooms_count": server_info[1]
     }, broadcast=True)
 
 # save each's client ip
@@ -108,13 +117,12 @@ def handle_join(data):
 
     # send the room
     emit("room", {
-        "unique_id": client_unique_id,
-        "room": client_room,
-        "status": status,
-        "clients": [client for client in rooms[client_room]]
+         "unique_id": client_unique_id,
+         "room": client_room,
+         "status": status,
+         "clients": [client for client in rooms[client_room]]
     }, room=client_room)
 
-    print(json.dumps(rooms, indent=2))
     data = [client_ip, client_unique_id, "join_room"]
     write_csv(data)
     update_html()
@@ -136,7 +144,6 @@ def leave_room_handler(data):
         emit("disconnect", "Stranger was disconnected.", room=client_room)
         print(f"client {client_unique_id} left the room {room}")
 
-        print(json.dumps(rooms, indent=2))
         data = [client_ip, client_unique_id, "leave_room"]
         write_csv(data)
         update_html()
@@ -150,17 +157,22 @@ def handle_message(data):
         room = data.get("room")
 
         emit("message", {
-            "unique_id": client_unique_id,
-            "message": message,
-            "room": room
+             "unique_id": client_unique_id,
+             "message": message,
+             "room": room
         }, room=room)
         print(f"data: {data}")
 
 @app.route("/")
 def home():
-    return render_template("index.html", link=host)
+    return render_template("index.html",
+                           link=server.server_link)
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=8000, debug=True)
+    server = server()
+    socketio.run(app,
+                 host=server.host_ip,
+                 port=server.host_port,
+                 debug=server.debug)
 
 
