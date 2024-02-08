@@ -12,7 +12,31 @@
 ## Description
 Chat and meet strangers anonymously. Powered with Flask and SocketIO.
 
-## Note
-Under Development:)
+## Features
+- Chat anonymously
+- Lightweight and Interactive
+- Telegram bot
+
+## Installation
+**Clone the repo**
+```
+git clone https://github.com/im-strange/pollify
+```
+
+**Customize** <br>
+`server-info.json` contains server details that you may want to configure first before running
+```json
+{
+    "host_ip": "127.0.0.1",
+    "host_port": 8000,
+    "debug": true,
+    "server_link": null,
+    "data_file": "clients.csv"
+}
+```
+You can paste your ngrok link in `server_link` for effective sharing.
+
+**Run** <br>
+You can now run `main.py`
 
 > Licensed with MIT
