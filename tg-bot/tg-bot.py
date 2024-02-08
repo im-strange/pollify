@@ -5,7 +5,7 @@ import csv
 from datetime import datetime
 
 BOT_TOKEN = "" # paste your bot's token here
-NGROK_LINK = "" # paste your ngrok link here
+SERVER_LINK = "" # paste your ngrok link here
 WARNING_MSG = """
     Attention: This platform is designed for respectful and responsible communication.
     Engage in conversations with kindness and empathy.\n
@@ -47,7 +47,7 @@ def start(message):
 def link(message):
     id = message.chat.id
     user = message.chat.username
-    bot.send_message(id, f"Here's the free link for today's Pollify chat: {NGROK_LINK}")
+    bot.send_message(id, f"Here's the free link for today's Pollify chat: {SERVER_LINK}")
     bot.send_message(id, WARNING_MSG)
     print(f"new message from {user}: {message.text}")
 
