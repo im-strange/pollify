@@ -168,7 +168,6 @@ def handle_message(data):
              "message": message,
              "room": room
         }, room=room)
-        print(f"data: {data}")
 
 @app.route("/")
 def home():
