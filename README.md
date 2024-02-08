@@ -13,6 +13,6 @@
 Chat and meet strangers anonymously. Powered with Flask and SocketIO.
 
 ## Note
-Under development..
+Under Development:)
 
 > Licensed with MIT
