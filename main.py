@@ -24,6 +24,7 @@ class server:
         self.host_port = self.data["host_port"]
         self.debug = self.data["debug"]
         self.server_link = self.data["server_link"]
+        self.save_clients = self.data["save_clients"]
         self.data_file = self.data["data_file"]
 
         if not self.server_link:
@@ -65,15 +66,16 @@ def update_html():
 
 # save each's client data
 def write_csv(data):
-    csv_file = server.data_file
-    current_file = list(csv.reader(open(csv_file)))
-    current_time = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
-    data.insert(2, current_time)
-    current_file.append(data)
+    if server.save_clients:
+        csv_file = server.data_file
+        current_file = list(csv.reader(open(csv_file)))
+        current_time = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+        data.insert(2, current_time)
+        current_file.append(data)
 
-    with open(csv_file, "w") as file:
-        writer = csv.writer(file)
-        writer.writerows(current_file)
+        with open(csv_file, "w") as file:
+            writer = csv.writer(file)
+            writer.writerows(current_file)
 
 @socketio.on("connect")
 def handle_connect():

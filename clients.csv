@@ -1,1 +1,9 @@
 ip,id,date,type
+127.0.0.1,polly_c7Ee7BR9,"February 25, 2024 09:04:54 PM",connect
+127.0.0.1,polly_c7Ee7BR9,"February 25, 2024 09:04:55 PM",join_room
+127.0.0.1,polly_dVyLda3x,"February 25, 2024 09:06:05 PM",connect
+127.0.0.1,polly_dVyLda3x,"February 25, 2024 09:06:05 PM",join_room
+127.0.0.1,polly_cU9zFQ7C,"February 25, 2024 09:06:05 PM",join_room
+127.0.0.1,polly_dVyLda3x,"February 25, 2024 09:06:33 PM",leave_room
+127.0.0.1,polly_IDYM4Nyk,"March 09, 2024 03:30:03 PM",connect
+127.0.0.1,polly_IDYM4Nyk,"March 09, 2024 03:30:03 PM",join_room
