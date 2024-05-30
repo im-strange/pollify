@@ -81,7 +81,6 @@ def write_csv(data):
 
 @socketio.on("connect")
 def handle_connect():
-    #client_unique_id = str(uuid.uuid4())
     client_ip = request.remote_addr
     client_unique_id = generate_id()
     server_info = get_server_info()
