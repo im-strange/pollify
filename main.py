@@ -7,9 +7,11 @@ import json
 import csv
 import random
 import string
+import logging
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "supersecretkey"
+logging.basicConfig(filename='flask.log', level=logging.INFO)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 rooms = {
