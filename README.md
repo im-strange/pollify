@@ -15,7 +15,6 @@ Chat and meet strangers anonymously. Powered with Flask and SocketIO.
 ## Features
 - Chat anonymously
 - Lightweight and Interactive
-- Telegram bot
 
 ## Installation
 **Clone the repo**
