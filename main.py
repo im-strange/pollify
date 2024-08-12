@@ -16,7 +16,8 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 rooms = {
     "1": [None, None],
-    "2": [None, None]
+    "2": [None, None],
+    "3": [None, None]
 }
 
 class server:
