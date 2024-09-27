@@ -183,5 +183,7 @@ if __name__ == "__main__":
     socketio.run(app,
                  host=server.host_ip,
                  port=server.host_port,
-                 debug=server.debug)
+                 debug=server.debug,
+				 allow_unsafe_werkzeug=True
+	)
 
